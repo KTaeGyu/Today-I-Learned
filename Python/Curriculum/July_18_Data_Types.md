@@ -2,17 +2,17 @@
 
 ## 목차
 
-1. Data Types
-2. Numeric Types
-3. Sequence Types
-4. Non-sequence Types
-5. Other Types
-6. Collection
-7. Type conversion
-8. Operator
-9. Additionals (가변과 불변 데이터의 메모리 참조 특징)
+1. [Data Types](#1-data-types)
+2. [Numeric Types](#2-numeric-type)
+3. [Sequence Types](#3-sequence-type)
+4. [Non-sequence Types](#4-non-sequence-types)
+5. [Other Types](#5-other-types)
+6. [Collection](#6-collection)
+7. [Type conversion](#7-type-conversion)
+8. [Operator](#8-operator)
+9. [Additionals](#9-additional)
 
-## 1. Data Types
+## 1. [Data Types](#목차)
 
 - 데이터 타입 : 값의 종류와 그 값에 적용 가능한 연산과 동작을 결정하는 속성
 
@@ -31,7 +31,7 @@
   - 각 데이터 타입 값들은 각자에게 적합한 함수를 가짐
   - 타입을 명시적으로 지정하면 코드를 읽는 사람이 변수의 의도를 더 쉽게 이해할 수 있고, 잘못된 데이터 타입으로 인한 오류를 미리 예방
 
-## 2. Numeric Type
+## 2. [Numeric Type](#목차)
 
 ### 2-1. int : 정수 자료형
 
@@ -110,7 +110,7 @@
     print(314e2)
     ```
 
-## 3. Sequence Type
+## 3. [Sequence Type](#목차)
 
 - 여러 개의 값들을 **순서대로 나열**하여 저장하는 자료형
   - str, list, tuple, range
@@ -438,7 +438,7 @@ my_str[::-1] # olleh : step을 이용한 문자열 뒤집기
     print(list(my_range_2)) # [1, 2, 3, 4, 5, 6, 7, 8, 9]
     ```
 
-## 4. Non-sequence Types
+## 4. [Non-sequence Types](#목차)
 
 <br>
 
@@ -512,7 +512,7 @@ my_str[::-1] # olleh : step을 이용한 문자열 뒤집기
     print(my_set_1 & my_set_2) # {3}
     ```
 
-## 5. Other Types
+## 5. [Other Types](#목차)
 
 <br>
 
@@ -548,7 +548,7 @@ my_str[::-1] # olleh : step을 이용한 문자열 뒤집기
     ```
 <br>
 
-## 6. Collection
+## 6. [Collection](#목차)
 
 - 여러 개의 항목 또는 요소를 담는 자료 구조
   - str, list, tuple, set, dict
@@ -575,20 +575,243 @@ my_str[::-1] # olleh : step을 이용한 문자열 뒤집기
 
 <br>
 
-## 7. Type Conversion
-### 7-1. 암시적 형변환
-### 7-2. 명시적 형변환
+## 7. [Type Conversion](#목차)
 
-## 8. Operator
+### 7-1. 암시적 형변환 (Implict type conversion)
+- 파이썬이 자동으로 형변환을 하는 것
+
+<br>
+
+- 암시적 형변환 예시
+  - Boolean 과 Numeric Type 에서만 가능
+  ```python
+  print(3 + 5.0) # 8.0
+  print(True + 3) # 4
+  print(True + False) # 1
+  
+  # False -> 정수 = 0
+  # False -> 실수 = 0.0
+  # False -> 문자 : ""
+  ```
+
+### 7-2. 명시적 형변환 (Explict type conversion)
+- 개발자가 직접 형변환을 하는 것
+- 암시적 형변환이 아닌 경우를 모두 포함
+
+<br>
+
+- 명시적 형변환 예시
+  - str -> int : 형식에 맞는 숫자만 가능
+  - int -> str : 모두 가능
+  ```python
+  print(int('1')) # 1
+  print(str(1) + '등') # 1등
+  print(float('3.5')) # 3.5
+  print(int(3.5)) # 3; 포멧팅에서는 반올림되지만, 형변환에서는 버림이 된다.
+  print(int('3.5')) # ValueError: invalid literal for int() with base 10: '3.5'
+  ```
+
+<br>
+
+- 컬렉션 간 형변환 정리
+
+        1
+        2
+
+<br>
+
+## 8. [Operator](#목차)
+
 ### 8-1. 산술 연산자
+
+    기호    연산자
+    -       음수 부호
+    +       덧셈
+    -       뺄셈
+    *       곱셈
+    /       나눗셈
+    //      정수 나눗셈 (몫)
+    %       나머지
+    **      지수 (거듭제곱)
+
+<br>
+
 ### 8-2. 복합 연산자
+- 연산과 할당이 함께 이뤄짐
+
+        기호    
+        +=      a += b      a = a + b
+        -=      a -= b      a = a - b
+        *=      a *= b      a = a * b
+        /=      a /= b      a = a / b
+        //=     a //= b     a = a // b
+        %=      a %= b      a = a +%b
+        **=     a **= b     a = a +**b
+<br>
+
+- 복합 연산자 예시
+```python
+numbers = [1, 2, 3, 4, 5]
+
+total = 0
+
+for num in numbers:
+    total += num
+
+print(total)
+```
+
+<br>
+
 ### 8-3. 비교 연산자
+
+        기호    연산자
+        <       미만
+        <=      이하
+        >       초과
+        >=      이상
+        ==      같음
+        !=      같지 않음
+        
+<br>
+- is 비교 연산자
+  - 메모리 내에서 같은 객체를 참조하는지 확인
+  - == 는 동등성(equality), is 는 식별성(identity)
+  - 값을 비교하는 == 와 다름
+
+        기호    연산자
+        is      같음
+        is not  같지 않음
+        
+<br>
+
+- 비교 연산자 예시
+```python
+print(3 > 6) # False
+print(2.0 == 2) # True
+print('Hi' == 'hi') # False
+
+# SyntaxWarning
+a = [1, 2, 3]
+b = [1, 2, 3]
+
+print(a == b) # True
+print(a is b) # False
+```
+
 ### 8-4. 논리 연산자
+
+        기호    연산자      내용
+        and     논리곱      두 피연산자 모두 True 인 경우에만 전체 식을 True로 평가
+        or      논리합      두 피연산자 중 하나라도 True 인 경우 전체 표현식을 True로 평가
+        not     논리부정    단일 피연산자를 부정
+        
+<br>
+
+- 논리 연산자 예시
+```python
+print(True and False) # False
+print(True or False) # True
+print(not True) # False
+print(not 0) # True
+
+num = 15
+result = (num > 10) and (num % 2 == 0)
+print(result # False
+
+name = 'Alice'
+age = 25
+result = (name == 'Alice') or (age == 30)
+print(result) # True
+```
+
+<br>
+
+### 8-4-1. 단축평가
+- 논리 연산에서 두 번째 피연산자를 평가하지 않고 결과를 결정하는 동작
+
+<br>
+
+- 단축평가 예시 문제
+```python
+vowels = 'aeiou'
+
+print(('a' and 'b') in vowels) # False
+print(('b' and 'a') in vowels) # True
+print(('a' or 'b') in vowels) # True
+
+print(3 and 5) # 5
+print(3 and 0) # 0
+
+print(3 or 5) # 3
+print(3 and 0) # 3
+```
+- 단축평가 동작
+  - and
+    - 첫 번째 피연산자가 False 인 경우, 전체 표현식은 False 로 결정, 두 번째 피연산자는 평가되지 않고 그 값이 무시
+    - 첫 번째 피연산자가 True 인 경우, 전체 표현식의 결과는 두 번째 피연산자에 의해 결정, 두 번째 피연산자가 평가되고 그 결과가 전체 표현식의 결과로 반환
+  - or
+    - 첫 번째 피연산자가 True 인 경우, 전체 표현식은 True 로 결정, 두 번째 피연산자는 평가되지 않고 그 값이 무시
+    - 첫 번째 피연산자가 False 인 경우, 전체 표현식의 결과는 두 번째 피연산자에 의해 결정, 두 번째 피연산자가 평가되고 그 결과가 전체 표현식의 결과로 반환
+
+<br>
+
+- 단축평가 장점 : 코드 실행을 최적화하고, 불필요한 연산을 피할 수 있도록 함
+
+<br>
+
 ### 8-5. 맴버십 연산자
+- 특정 값이 시퀀스나 다른 컬렉션에 속하는지 여부를 확인
+
+        기호    내용
+        in      왼쪽 피연산자가 오른쪽 피연산자의 시퀀스에 속하는지를 확인
+        not in  왼쪽 피연산자가 오른쪽 피연산자의 시퀀스에 속하지 않는지를 확인
+        
+<br>
+
+- 멤버십 연산자 예시
+```python
+word = 'hello'
+numbers = [1, 2, 3, 4, 5]
+
+print('h' in word) # True
+
+pring(4 not in numbers) # False
+```
+
 ### 8-6. 시퀀스형 연산자
 
-## 9. Additional (가변과 불변 데이터의 메모리 참조 특징)
+        기호    내용
+        +       결합 연산자
+        *       반복 연산자
+     
+<br>
 
+- 시퀀스형 연산자 예시
+```python
+print('a' + 'b') # ab
+
+print('a' * 5) # aaaaa
+
+print([1, 2] + ['a', 'b']) # [1, 2, 'a', 'b']
+
+print([1, 2] * 2) # [1, 2, 1, 2]
+```
+
+## 9. [Additional](#목차)
+
+<br>
+
+시퀀스 & 논시퀀스 자료형
+>문자열 : ' ', " " > 불현 시퀀스 자료형 -> 알고리즘 IM형 문자열 파싱 <br>
+>리스트 : [ ] > 가변 시퀀스 자료형 -> 알고리즘 IM형 방향배열 등.. A형 DFS, BFS <br>
+>튜플   : ( ) > 불변 시퀀스 자료형 -> <br>
+>딕셔너리 : { : } > 가변 비시퀀스 자료형 -> key : value -> DB의 json 형식과 비슷 <br>
+>세트 : { } > 가변 비시퀀스 자료형 -> 중복을 허용하지 않는다 -> 집합
+
+<br>
+
+가변 데이터와 불변 데이터의 메모리 참조 특징
 ```python
 ## 가변데이터 list
 list_1 = [1, 2, 3]
@@ -611,3 +834,103 @@ print(y) # 10
 # x는 주소를 바꾸지만, y는 처음에 바라보던 주소를 그대로 보고 있게 된다.
 # 불변 데이터의 특징이다.
 ```
+<br>
+
+리스트의 활용
+```python
+# 2차원 리스트 작성법 (행렬)
+array = [
+    [1, 2, 3], 
+    [4, 5, 6], 
+    [7, 8, 9]
+]
+
+# 2차원 리스트 생성_1
+rows = int(input("행의 개수를 입력하세요: "))
+matrix = []
+
+for i in range(rows):
+    row = list(map(int, input().split()))
+    matrix.append(row)
+
+# 2차원 리스트 생성_2
+rows = int(input("행의 개수를 입력하세요: "))
+
+matrix = [list(map(int, input().split())) for _ in range(rows)]
+
+for row in matrix:
+    print(row)
+```
+<br>
+
+튜플의 활용
+```python
+def move_around(position):
+    x, y = position
+    directions_1 = [(0, 1), (0, -1), (1, 0), (-1, 0)] 
+    # 우, 좌, 하, 상 이동을 표시
+
+def move_cross(position):
+    x, y = position
+    directions_2 = [(1, 1), (-1, 1), (1, -1), (-1, -1)] 
+    # 우하단, 우상단, 좌하단, 좌상단 이동을 표시
+```
+<br>
+
+range() in detail
+```python
+# 주로 반복문과 함께 쓰임
+# range(start, end, step) 일때, 
+# start > end, step > 0 : start 부터 end-1 까지 step 씩 증가
+# start < end, step < 0 : start 부터 end-1 까지 step 씩 감소
+range(5) # 0 ~ 4
+range(2,5) # 2~4
+range(1, 10, 2) # 1, 3, 5, 7, 9
+range(5, 0, -1) # 5, 4, 3, 2, 1
+
+for i in range(10, 0, -1):
+    print(i) # 10 부터 1까지 1씩 감소 하며 출력
+```
+
+<br>
+
+2차원 딕셔너리 활용
+```python
+my_dict = {
+    'a1' : {'b1': 1, 'b2': 2, 'b3': 3}
+    'a2' : {'b4': 4, 'b5': 5, 'b6': 6}
+    'a3' : {'b7': 7, 'b8': 8, 'b9': 9}
+}
+
+# 출력 방법_1
+print(my_dict['a2']['b2'])
+
+# 출력 방법_2
+print(my_dict.get('a2').get('b2'))
+```
+
+<br>
+
+세트 활용
+```python
+# 로또 번호 추첨
+import random
+
+lotto_set = set()
+
+while len(lotto_num) < 6:
+    number = random.randint(1, 45)
+    lotto_set.add(number)
+
+lotto_list = list(lotto_nums)
+lotto_list.sort()
+
+print(lotto_list)
+```
+
+<br>
+
+다른 유형
+> None<br>
+> Boolean
+

@@ -1,14 +1,19 @@
-# Java
 
-## 목차
-
-1. 변수
-2. 데이터 타입
-3. 연산자
+# Java_Sneak_peek
 
 <br>
 
-## 1. 변수
+## 목차
+
+- [변수](#1-변수)
+- [데이터 타입](#2-데이터-타입)
+- [연산자](#3-연산자)
+- [조건문](#4-조건문)
+- [반복문](#5-반복문)
+
+<br>
+
+## 1. [변수](#목차)
 
 - 변수 : 데이터를 담아두는 상자
 - 변수 선언
@@ -28,7 +33,7 @@
 
 <br>
 
-## 2. 데이터 타입
+## 2. [데이터 타입](#목차)
 
 1. Primitive Data Type (기초형)
 
@@ -57,7 +62,7 @@
        - float fvar = 100;
        - long var = (long)fvar;
 
-## 3. 연산자
+## 3. [연산자](#목차)
 
     우선순위 /연산자         /연산대상              /연산내용
     1       /[]             /모든 데이터형          /배열요소 지정
@@ -86,7 +91,11 @@
 
 <br>
 
-## 4.1 조건문 (if)
+## 4. [조건문](#목차)
+
+### 4.1 [조건문 (if)](#목차)
+
+---
 
 ```java
 // expression
@@ -152,7 +161,10 @@ if ( num == (내가 말한 숫자) ) {
 
 <br>
 
-## 4.2 조건문 (switch)
+### 4.2 [조건문 (switch)](#목차)
+
+---
+
 - 여러가지 값 비교 시 사용
 - expr은 반드시 정수형(int, byte, short, char)이어야 함
 ```java
@@ -174,9 +186,63 @@ switch (expr) {
 
 <br>
 
-## 5. Loop (for)
+## 5. [반복문](#목차)
+
+### 5.1 [Loop (for)](#목차)
+
+---
+
 ```java
+// expression
 for ( init_expr; boolean_testexpr; alter_expr ) {
     Statement or block;
 }
+
+for ( type item : items ) {
+    Statement or block;
+    ..
+}
 ```
+```java
+// case_1
+int[] nums = {1, 2, 3, 4, 5, 6};
+
+for  (int i = 0; i < nums.length; i++) {
+    System.out.println(nums[i])
+}
+```
+```java
+// case_2
+int[] nums = {1, 2, 3, 4, 5, 6};
+
+for  (int n = nums) {
+    System.out.println(n)
+}
+```
+
+<br>
+
+### 5.2 [Loop (while)](#목차)
+
+---
+
+- 반복문에서 사용되는 문장들
+  - break;
+  - continue;
+  - label;
+  - break label;
+  - Continue label;
+```java
+// expression
+while (boolean) {
+    Statement or block;
+    ...
+}
+
+do {
+    Statement or block;
+    ..
+} while (boolean);
+```
+
+<br>
