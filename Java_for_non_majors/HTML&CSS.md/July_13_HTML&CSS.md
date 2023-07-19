@@ -60,35 +60,125 @@
 <br>
 
 - Grouping
-  - \<pre\>
-    - Preformatted text
-    - Block level elements
-    - 공백 문자와 줄 바꿈 문자를 보존
-  - \<ol\>
-    -  Ordered list
-    -  Block level element
-    -  Attributes
-       -  start = *number*
-       -  type = {1|A|a|I|i}
- -  \<ul\>
-    -  Unordered list
-    -  Block level element
- -  \<li\>
-    -  List item
-    -  \<ol\> 또는\<ul\> 안에서 하나의 item 을 표현
-    -  Attributes
-       -  value = *number*, only within \<ol\>
- -  \<div\>
-    -  Block level element
-    -  Grouping block level elements
-    -  No visual changes
- -  \<a\>
-    -  Anchor
-    -  Hyper link to another page
-    -  Inline level element
-    -  Attributes
-       -  href = URL
-       -  targer = {_blank | _parent | _self | _top | framename}
+    - \<pre\>
+        - Preformatted text
+        - Block level elements
+        - 공백 문자와 줄 바꿈 문자를 보존
+    - \<ol\>
+        -  Ordered list
+        -  Block level element
+        -  Attributes
+            -  start = *number*
+            -  type = {1|A|a|I|i}
+    -  \<ul\>
+        -  Unordered list
+        -  Block level element
+    -  \<li\>
+        -  List item
+        -  \<ol\> 또는\<ul\> 안에서 하나의 item 을 표현
+        -  Attributes
+           -  value = *number*, only within \<ol\>
+    -  \<div\>
+        -  Block level element
+        -  Grouping block level elements
+        -  No visual changes
+- Text Level
+    -  \<a\>
+        -  Anchor
+        -  Hyper link to another page
+        -  Inline level element
+        -  Attributes
+            -  href = URL
+            -  targer = {_blank | _parent | _self | _top | *framename*}
+            -  hreflag = *language_code*
+    - \<span\>
+        - Inline level element
+        - Grouping inline level elements
+        - No visual changes
+- Embedded
+    - \<img\>
+        - Defines an image
+        - Inline level element
+        - Attributes
+            - src = *URL*
+            - alt = text, 대체 text
+            - height = *pixels* or %
+            - width = *pixels* or %
+            - usemap = *#map_name*
+            - ismap = ismap
+    - \<audio\>
+        - Audio 콘텐츠 재생
+        - Attributes
+            - src = *URL*
+            - autoplay = autoplay, 자동 재생 여부
+            - loop = loop, 반복 재생 여부
+            - controls = controls, control 표시 여부
+            - preload = {auto | metadata | none}
+    - \<video\>
+        - Video 콘텐츠 재생
+        - Attributes
+            - src = *URL*
+            - autoplay = autoplay, 자동 재생 여부
+            - loop = loop, 반복 재생 여부
+            - controls = controls, control 표시 여부
+            - preload = preload
+            - poster = *URL*, 재생 이전에 표시될 이미지
+            - audio = muted
+            - width = *pixels*
+            - height = *pixels*
+    - \<source\>
+        - Media 요소의 대체 미디어 자원 지정
+        - 다양한 format을 지정하여 fallback 지원
+        - Attribute
+            - src = *URL*
+            - media = *media query*
+            - type = *MIME_TPYE*
+- Forms
+    - \<form\>
+        - Block level element
+        - 사용자 입력 Data를 Server로 전송
+        - Input 요소를 포함
+        - Attributes
+            - action = *URL*, HTTP Request URL
+            - method = {get | post}, HTTP Request Method
+            - target = {_blank | _self | _parent | _top | *frame_name*}, Result target
+            - accept = *MIME_TYPE*
+            - accept-charset = *charset*
+            - enctype = {text/plain | multipart/form-data | application/x-www-form-urlencoded}
+            - name = *form_name*
+    - \<input\>
+        - User input
+        - Inline level element
+        - Elements for user input fields
+        - Depending on the type attribute
+        - Attributes
+            - type = {text | button | checkbox | radio | password | file | image | submit | reset | hidden}
+            - name = name, HTTP Request parameter name
+            - value = value, HTTP Request parameter value
+            - disabled = disabled
+            - alt = text, alternate text
+    - New input type
+
+            유형                설명                   코드
+            이메일 주소         이메일 주소 입력       \<input type="email"\>
+            웹 주소             웹페이지 주소 입력     \<input type="url"\>
+            숫자(스핀박스)      숫자를 ^v를 눌러 선택   \<input type="number"\>
+            숫자(슬라이드막대)   슬라이드 막대로 선택   \<input type="range"\>
+            날씨/시간           시간이나 날짜를 선택    \<input type="date"\>
+                                                     \<input type="month"\>
+                                                     \<input type="weel"\>
+                                                     \<input type="time"\>
+                                                     \<input type="datetime"\>
+                                                     \<input type="datetime-local"\>
+            검색상자            입력한 값을 전송       \<input type="search"\>
+            색상선택            색상을 선택            \<input type="color"\>
+
+<br>
 
 # 2. [CSS](#목차)
 
+- Cascading Style Sheets
+- HTML Element(Markup)의 시각적 표현(Appearance) 정의
+- CSS Levels
+    - CSS, Earliest Draft in May, 1995
+    - 
