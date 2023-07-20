@@ -11,9 +11,8 @@
 5. [유용한 함수](#5-유용한-함수)
 6. [Packing & Unpacking](#6-packing--unpacking)
 7. [모듈](#7-모듈)
-8. [모듈 활용](#8-모듈-활용)
-9. [파이썬 표준 라이브러리](#9-파이썬-표준-라이브러리)
-10. [Additional](#10-additionals)
+8. [패키지](#8-패키지)
+9. [Additional](#9-additionals)
 
 <br>
 
@@ -494,13 +493,193 @@ print(result) # [2, 4, 6, 8, 10]
 
 ## 6. [Packing & Unpacking](#목차)
 
+### 6-1. Packing
+- 여러 개의 값을 하나의 변수에 묶어서 담는 것 (시퀀스 형태로)
+
+<br>
+
+- 패킹 예시
+  - 변수에 담긴 값들은 튜플(tuple) 형태로 묶임
+  ```python
+  packed_values = 1, 2, 3, 4, 5
+  print(packed_values) # (1, 2, 3, 4, 5)
+  ```
+- '*'을 활용한 패킹
+  ```python
+  # *b 는 남은 요소들을 리스트로 패킹하여 할당
+  numbers = [1, 2, 3, 4, 5]
+  a, *b, c = numbers # *(asterisk) : 패킹 연산자
+  print(a) # 1
+  print(b) # [2, 3, 4]
+  print(c) # 5
+  ```
+  ```python
+  # print 함수에 임의의 가변 인자를 작성할 수 있었던 이유 : *objects
+  # print(*objects, sep= ' ', end = '\n', file=sys.stdout, flush=False)
+  print('you', 'need', 'python') # you need python
+
+  # 참고: sep 은 여러 object 사이를 채우는 인자를 지정, end는 문장 끝에 올 인자를 지정
+  ```
+
+<br>
+
+### Unpacking
+- 패킹된 변수의 값을 개별적인 변수로 분리하여 할당하는 것
+
+<br>
+
+- 언패킹 예시
+  - 튜플이나 리스트 등의 객체의 요소들을 개별 변수에 할당
+  ```python
+  packed_values = 1, 2, 3, 4, 5
+  a, b, c, d, e = packed_values
+  
+  print(a, b, c, d, e) # 1 2 3 4 5
+  ```
+- '*' 을 활용한 언패킹
+  ```python
+  # * 는 리스트의 요소를 언패킹
+  names = ['alice', 'jane', 'peter']
+  print(*names) # alice jane peter
+  ```
+- '**' 을 활용한 언패킹
+  ```python
+  # ** 는 딕셔너리의 키-값 쌍을 함수의 키워드 인자로 언패킹
+  def my_function(x, y, z):
+    print(x, y, z)
+  
+  my_dict = {'x': 1, 'y': 2, 'z': 3}
+  my_function(**my_dict) # 1 2 3
+  ```
+  
+<br>
+
+### *, ** 패킹 / 언패킹 연산자 정리
+- '*'
+  - 패킹 연산자로 사용될 때, 여러 개의 인자를 하나의 튜플로 묶는 역할
+  - 언패킹 연산자로 사용될 때, 시쿼스나 반복 가능한 객체를 각각의 요소로 언패킹하여 함수의 인자로 전달
+- '**'
+  - 언패킹 연산자로 사용될 때, 딕셔너리의 키-값 쌍을 키워드 인자로 언패킹하여 함수의 인자로 전달하는 역할
+
+<br>
+
+## 들어가기 전에 : 라이브러리는 모듈과 패키지의 집합이다!
+
+<br>
+
+- 개요
+  - 과학자, 수학자가 모든 이론을 새로 만들거나 증명하지 않는 것처럼 개발자 또한 프로그램 전체를 모두 혼자 힘으로 작성하는 것은 드문 일
+  - 이미 다른 프로그래머가 작성해 놓은 수천, 수백만 줄의 코드를 사용하는 것은 생산성에서 매우 중요한 일
+
+<br>
+
 ## 7. [모듈](#목차)
+- 한 파일로 묶인 변수와 함수의 모음
+- 특정한 기능을 하는 코드가 작성된 파이썬 파일(.py)
 
-## 8. [모듈 활용](#목차)
+<br>
 
-## 9. [파이썬 표준 라이브러리](#목차)
+- 모듈 예시
+  - 파이썬의 math 모듈
+  - 파이썬이 미리 작성해 둔 수학 관련 변수와 함수가 작성된 모듈
+```python
+# 모듈 불러오는 방법
+import math # ctrl을 누른 상태로 함수를 누르면 모듈이 저장된 파일로 이동한다.
 
-## 10. [Additionals](#목차)
+print(math.pi) # 3.141592653589793
+print(math.sqrt(4)) # 2
+```
+
+### 7-1 . 모듈 활용
+
+#### 7-1-1. modul import
+```python
+# 모듈 내 변수와 함수에 접근하려면 import 문이 필요
+import math
+
+# from 절을 활용하면 특정 모듈을 미리 참조하고 어떤 요소를 import 하지 명시 가능
+from math import pi, sqrt
+```
+```python
+# 내장함수 help 를 사용해 모듈에 무엇이 들어있는지 확인 가능
+# ctrl + 함수 좌클릭을 통해 해당 모듈 파일로 이동 가능
+help(math)
+```
+- **주의 : 서로 다른 모듈이 같은 이름의 함수를 제공할 경우 문제 발생**
+  - 마지막에 import 된 이름으로 지정됨
+```python
+# *은 모듈 내 모든 요소를 import 한다.
+# 서로 다른 모듈이 제공하는 함수의 이름이 같을 경우 문제가 생길 수 있어 권장하지 않음
+from math import *
+```
+#### 7-1-2. modul usage
+- '. (dot)' : "점의 왼쪽 객체에서 오른쪽 이름을 찾아라"는 의미의 연산자
+```python
+## 모듈만 import 했을 경우
+# 모듈명.변수명
+print(math.pi)
+
+# 모듈명.함수명
+print(math.sqrt(4))
+```
+```python
+## from modul import element 를 이용한 경우
+print(pi)
+print(sqrt(4))
+```
+
+<br>
+
+### 7-2. 사용자 정의 모듈
+- 직접 정의한 모듈 사용하기
+  1. 모듈 작성
+  2. 모듈 내 함수 작성
+  3. import 를 이용하여 모듈 혹은 함수 호출
+```python
+# modul.py
+def function():
+  code_block
+```
+```python
+# project.py
+import modul
+
+print(modul.function())
+```
+
+<br>
+
+## 8. [패키지](#목차)
+
+### 8-1. 파이썬 표준 라이브러리
+- 파이썬 언어와 함께 제공되는 다양한 모듈과 패키지 모음
+- [파이썬 표준 라이브러리 링크](https://docs.python.org/ko/3/library/index.html)
+
+
+### 8-1. 패키지
+- 관련된 모듈들을 하나의 디렉토리에 모아 놓은 것
+
+<br>
+
+- 응용
+  - 디렉토리 구성
+  - 모듈 작성
+  - 함수 작성
+  - import 이용하여 패키지 불러오기
+```dir
+~/dir/inner_dir_1/modul_1.py
+~/dir/inner_dir_2/modul_2.py
+```
+```python
+from dir.inner_dir_1.modul import funcion()
+
+result = function()
+print(result)
+```
+외부 패키지 pip 명령어들
+pip install requests
+
+## 9. [Additionals](#목차)
 
 ### [돌아가기_1](#1-함수)
 - 함수의 정의 및 선언 방법

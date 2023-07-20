@@ -12,7 +12,7 @@
 
 <br>
 
-- Syntax
+## 1-1. Syntax 의 요소
   - Element(요소)
     - content 의 type 을 지정
     - Element_name 은 표준으로 정의
@@ -35,31 +35,33 @@
 
 <br>
 
-- Sections
-  - \<article\>
-    - 문서의 독립적인 부분을 구성하는 섹션
-    - 위젯 등 독립적인 아이템
-    - Ex : News, Blog Post, Article
-    - article 요소를 중첩할 경우 외부 article 요소와 연관된 내용
-  - \<section\>
-    - 일반적인 문서 또는 프로그램의 섹션
-    - 제목으로 시작하는 컨텐츠의 의미적 그룹
-  - \<nav\>
-    - 네비게이션 링크로 구성된 섹션
-    - 다른 페이지 또는 동일 페이지의 다른 섹션 연결
-  - \<aside\>
-    - 문서의 주 내용과 관련성이 낮은 내용
-    - 일반적으로 사이드바 형태로 표현
-    - Ex : 사이트 링크, 광고, nav 요소 그룹
-  - \<footer\>
-    - 꼬리말
-    - 가장 가까운 선행하는 \<section\>의 footer
-    - 작성자, 연관 링크, 저작권 등
-    - \<address\> 또는 \<nav\> 등의 요소를 포함
+
+## 1-2. Syntax 종류
+1. Sections
+   - \<article\>
+       - 문서의 독립적인 부분을 구성하는 섹션
+       - 위젯 등 독립적인 아이템
+       - Ex : News, Blog Post, Article
+       - article 요소를 중첩할 경우 외부 article 요소와 연관된 내용
+   - \<section\>
+       - 일반적인 문서 또는 프로그램의 섹션
+       - 제목으로 시작하는 컨텐츠의 의미적 그룹
+   - \<nav\>
+       - 네비게이션 링크로 구성된 섹션
+       - 다른 페이지 또는 동일 페이지의 다른 섹션 연결
+   - \<aside\>
+       - 문서의 주 내용과 관련성이 낮은 내용
+       - 일반적으로 사이드바 형태로 표현
+       - Ex : 사이트 링크, 광고, nav 요소 그룹
+   - \<footer\>
+       - 꼬리말
+       - 가장 가까운 선행하는 \<section\>의 footer
+       - 작성자, 연관 링크, 저작권 등
+       - \<address\> 또는 \<nav\> 등의 요소를 포함
 
 <br>
 
-- Grouping
+2. Grouping
     - \<pre\>
         - Preformatted text
         - Block level elements
@@ -82,7 +84,10 @@
         -  Block level element
         -  Grouping block level elements
         -  No visual changes
-- Text Level
+
+<br>
+
+3. Text Level
     -  \<a\>
         -  Anchor
         -  Hyper link to another page
@@ -95,7 +100,10 @@
         - Inline level element
         - Grouping inline level elements
         - No visual changes
-- Embedded
+
+<br>
+
+4. Embedded
     - \<img\>
         - Defines an image
         - Inline level element
@@ -133,7 +141,10 @@
             - src = *URL*
             - media = *media query*
             - type = *MIME_TPYE*
-- Forms
+
+<br>
+
+5. Forms
     - \<form\>
         - Block level element
         - 사용자 입력 Data를 Server로 전송
@@ -181,4 +192,113 @@
 - HTML Element(Markup)의 시각적 표현(Appearance) 정의
 - CSS Levels
     - CSS, Earliest Draft in May, 1995
-    - 
+    - CSS Level1, W3C Official Recommendation in Dec, 1996
+    - CSS Level2, W3C Official Recommendation in May, 1998
+    - CSS Level3, Working Draft(Not yet Recommendation)
+- 장점
+    - 구조와 펴현의 분리, Sementic Markup
+    - File Size 감소
+    - 효율적이고 정교한 디자인 제어
+    - Browser 호환성에 대처 용이
+
+<br>
+
+## 2-1. CSS를 사용하는 3가지 방법
+  1. External Style Sheet, \<link\>
+      ```CSS
+      <head>
+          <link rel="stylesheet" type="text/css" href="style.css" />
+      </head>
+      ```
+  2. Internal Style Sheet, \<style\>
+      ```CSS
+      <head>
+          <style type="text/css">
+              body { margin: 0; padding: 0; }
+              p { color : red; }
+          </style>
+      </head>
+      ```
+  3. Inline Style
+      ```CSS
+      <link rel="stylesheet" type="text/css" href="style.css" />
+      ```
+
+<br>
+
+## 2-2. Syntax
+  - 기본 형식
+  ```CSS
+  /*selector(h1)   declarations({ })*/
+  h1 { color:blue; font-size:12px; }
+  /*  {property:value;}  */
+  ```
+  - 주석 : /*content*/
+
+<br>
+
+## 2-3. Selector
+- 스타일을 지정할 대상 요소를 선택하는 데 사용되는 패턴 표기법
+
+<br>
+
+- Universal Selector
+    
+        Selector            Example         Description
+        *                   *               모든 요소 선택
+
+<br>
+
+- Type Selector
+
+        Selector            Example         Description
+        element             div             모든 \<dir\> 요소 선택
+
+<br>
+
+- ID Selector
+
+        Selector            Example         Description
+        #id                 #notice         id="notice"인 요소 선택
+
+<br>
+
+- Class Selector
+
+        Selector            Example         Description
+        .class              .head           class="head"인 요소 선택
+
+<br>
+
+- Attribute Selector
+
+        Selector            Example         Description
+        [attribute]         [type]          type 속성을 갖는 모든 요소
+        [attribute=value]   [type=text]     type="text" 속성을 갖는 모든 요소
+        [attribute~=value]  [type~=text]    type~="text" 속성의 값이 "text" 단어를 포함하는 모든 요소
+        [attribute|=value]  [type!=text]    type|="text" 속성의 값이 "text" 단어로 시작하는 모든 요소
+
+<br>
+
+- Descendant Selector
+
+        Selector            Example         Description
+        element element     ul span         <ul>안에 위치한 모든 <span> 요소 선택
+
+<br>
+
+- Child Selector
+
+        Selector            Example         Description
+        element > element   li > span       <li>를 부모로 갖는 모든 <span> 요소 선택
+
+<br>
+
+- Link pseudo class
+
+        Selector            Example         Description
+        :link               a:link          unvisited links
+        :visited            a:visited       visited links
+        :active             a:active        active link
+        :hover              a:hover         mouse over 상태인 <a> 요소
+        :focus              a:focus         focus를 갖는 <a> 요소
