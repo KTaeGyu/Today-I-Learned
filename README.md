@@ -7,21 +7,19 @@ SSAFY 에서 배운 내용을 매일 기록한다.
 1주차 :
 
     1. chatGPT
-        * chatGPT 란?
-        * chatGPT Program Problem
     2. markdown<br>
-        * markdown, CLI 란?
-        * markdown 기본 사용법
     3. git
-        * git 이란?
-        * git 구조와 작동 원리
-        * git 실행 방법
-        * github 이용 방법
 
 <br>
 
 2주차 :
 
-    1.
+    1. 프로그래밍
+    2. 데이터 타입
+    3. 함수
+    4. 제어문
+    5. PJT 1회차
+
+<br>
 
 ## Java 비전공
