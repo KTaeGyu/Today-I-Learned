@@ -7,7 +7,7 @@ SSAFY 에서 배운 내용을 매일 기록한다.
 1주차 :
 
     1. chatGPT
-    2. markdown<br>
+    2. markdown
     3. git
 
 <br>
