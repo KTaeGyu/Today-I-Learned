@@ -5,10 +5,13 @@ from copy import deepcopy
 
 
 blank = '_'
-plate = [[blank]*15 for _ in range(15)]
-for dx in range(15):
+board_range = 15
+plate = [[blank]*board_range for _ in range(board_range)]
+for dx in range(board_range):
     plate[dx].append(dx % 10)
-dy = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4]
+dy = list(range(board_range))
+for i in range(board_range):
+    dy[i] = dy[i] % 10
 plate.append(dy)
 judge = [[(-2, 0), (-1, 0), (0, 0), (1, 0), (2, 0)],    # strip
          [(0, -2), (0, -1), (0, 0), (0, 1), (0, 2)],    # rank
@@ -24,7 +27,7 @@ def white():
     while True:
         try:
             y, x = map(int, input().split())
-            if x < 0 or x >= 15 or y < 0 or y >= 15:
+            if x < 0 or x >= board_range or y < 0 or y >= board_range:
                 print('오목 판을 벗어났습니다.')
                 raise ValueError
             elif plate[y][x] == blank:
@@ -44,7 +47,7 @@ def black():
     while True:
         try:
             y, x = map(int, input().split())
-            if x < 0 or x >= 15 or y < 0 or y >= 15:
+            if x < 0 or x >= board_range or y < 0 or y >= board_range:
                 print('오목 판을 벗어났습니다.')
                 raise ValueError
             elif plate[y][x] == blank:
@@ -65,14 +68,14 @@ def judgement():
     bw = False
     is_break = False
     for std in range(4):
-        for i in range(15):
-            for j in range(15):
+        for i in range(board_range):
+            for j in range(board_range):
                 wc = 0
                 bc = 0
                 for k in range(5):
                     ni = i + judge[std][k][0]
                     nj = j + judge[std][k][1]
-                    if 0 <= ni < 15 and 0 <= nj < 15:
+                    if 0 <= ni < board_range and 0 <= nj < board_range:
                         if plate[ni][nj] == 1:
                             wc += 1
                         if plate[ni][nj] == 2:
@@ -82,9 +85,9 @@ def judgement():
                     for k2 in range(2):
                         ci = i + judge[std+4][k2][0]
                         cj = j + judge[std+4][k2][1]
-                        if wc == 5 and 0 <= ci < 15 and 0 <= cj < 15 and plate[ci][cj] == 1:
+                        if wc == 5 and 0 <= ci < board_range and 0 <= cj < board_range and plate[ci][cj] == 1:
                             is_ok = False
-                        if bc == 5 and 0 <= ci < 15 and 0 <= cj < 15 and plate[ci][cj] == 2:
+                        if bc == 5 and 0 <= ci < board_range and 0 <= cj < board_range and plate[ci][cj] == 2:
                             is_ok = False
                     if is_ok:
                         if wc == 5:

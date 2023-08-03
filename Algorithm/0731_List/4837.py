@@ -20,25 +20,58 @@
 #2 1
 #3 0
 """
-A = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
 
+import sys
+sys.stdin = open("input.txt", "r")
+A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 T = int(input())
 
 
-def three_comb(N, K):
-    result = set()
-    l = 12
-    if l < K:
-        l = K
-    for i in range(l):
-        for j in range(i+1, l):
-            for k in range(j+1, l):
-                if i + j + k == N:
-                    
+def combination(N, K):
+    result = 0
+    j = 0
+    for _ in range(13-N):
+        nums = []
+        for i in range(j, 12):
+            if len(nums) < N:
+                nums.append(A[i])
+            elif sum(nums) != K:
+                nums.pop()
+                nums.append(A[i])
+            elif len(nums) == N and sum(nums) == K:
+                result += 1
+                nums.pop()
+                nums.append(A[i])
+        j += 1
 
     return result
 
 
-for tc in range(T):
-    N, K = map(int, input().split())
+for tc in range(1, T+1):
+    n, k = map(int, input().split())
+    print(f'#{tc} {combination(n, k)}')
 
+# A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+# T = int(input())
+#
+#
+# def count_subsets_with_sum(N, K, index, current_sum):
+#     if N == 0:
+#         return 1 if current_sum == K else 0
+#
+#     if index >= len(A):
+#         return 0
+#
+#     # 현재 원소를 선택하는 경우
+#     count_with_current = count_subsets_with_sum(N - 1, K, index + 1, current_sum + A[index])
+#
+#     # 현재 원소를 선택하지 않는 경우
+#     count_without_current = count_subsets_with_sum(N, K, index + 1, current_sum)
+#
+#     return count_with_current + count_without_current
+#
+#
+# for tc in range(1, T + 1):
+#     N, K = map(int, input().split())
+#     count = count_subsets_with_sum(N, K, 0, 0)
+#     print(f'#{tc} {count}')
