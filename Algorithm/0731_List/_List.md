@@ -9,8 +9,8 @@
 7. [배열: 2차원 배열](#7-배열-2차원-배열)
 8. [부분집합 생성(비트연산자)](#8-부분집합-생성)
 9. [바이너리 서치](#9-이분탐색)
-10. [셀렉션 알고리즘]()
-11. [선택 정렬]()
+10. [셀렉션 알고리즘](#10-셀렉션-알고리즘)
+11. [선택정렬](#11-선택정렬)
 
 ## 1. [알고리즘](#목차)
 ### 알고리즘
@@ -104,15 +104,15 @@
 - 버블 정렬 예시:
     - 정렬 과정<br>
     <figure>
-    <img src="./images/bubbleex.PNG" width=350>
+    <img src="./images/bubbleex.PNG" width=450>
     </figure>
     - 슈도코드<br>
     <figure>
-    <img src="./images/bubblepesudo.PNG" width=400>
+    <img src="./images/bubblepesudo.PNG" width=500>
     </figure>
     - 구현예시<br>
     <figure>
-    <img src="./images/bubblesimul.PNG" width =400>
+    <img src="./images/bubblesimul.PNG" width =500>
     </figure>
 ### 4. 카운팅 정렬
 - 카운팅 정렬
@@ -124,11 +124,11 @@
 - 카운팅 정렬 예시
     - 정렬 과정<br>
     <figure>
-    <img src="./images/countingex.png" width=350>
+    <img src="./images/countingex.png" width=400>
     </figure>
     - 구현 예시<br>
     <figure>
-    <img src="./images/countingsimul.png" width=400>
+    <img src="./images/countingsimul.png" width=500>
     </figure>
 ### 5. 완전검색
 - 완전검색
@@ -164,7 +164,7 @@
 - 단순하게 순열을 생성하는 방법.
     - 각 자리수별로 loop를 이용해 구현 가능<br>
         <figure>
-        <img src="./images/permutation.PNG" width=350>
+        <img src="./images/permutation.PNG" width=500>
         </figure>
 ### 6. 그리디
 - 탐욕 알고리즘
@@ -178,16 +178,16 @@
     3. 해 검사: 새로운부분해 집합이 문제의 해가 되는지를 확인한다. 아직 전체 문제의 해가 완성되지 않았다면 1.의 해 선택부터 다시 시작한다.
 - 탐욕 알고리즘의 예: 거스름돈 줄이기<br>
     <figure>
-    <img src="./images/greedy.png" width=350>
+    <img src="./images/greedy.png" width=500>
     </figure>
 - 탐욕 알고리즘의 예: Baby-gin
     - counts 배열의 각 원소를 체크하여 run과 triplet, baby-gin 여부를 판단한다.<br>
     <figure>
-    <img src="./images/babygingreedy.png" width=350>
+    <img src="./images/babygingreedy.png" width=500>
     </figure>
     - 구현 예시<br>
     <figure>
-    <img src="./images/greedyex.png" width=400>
+    <img src="./images/greedyex.png" width=500>
     </figure>
 ### 7. [배열: 2차원 배열](#목차)
 - 2차원 배열
@@ -196,36 +196,36 @@
         - 2차원 이상의 다차원 List는 차원에 따라 Index를 선언
         - 2차원 List의 선언: 세로길이(행의 개수), 가로길이(열의 개수)를 필요로 함
         - 파이썬에서는 데이터 초기화를 통해 변수선언과 초기화가 가능함
-        ```
-        arr = [[0, 1, 2, 3], 
-               [4, 5, 6, 7]]
-        
-        # [참고]
-        N = int(input())
-        arr = [list(map(int, input().split())) for _ in range(N)]
-        ```<br><br>
+            ```
+            arr = [[0, 1, 2, 3], 
+                [4, 5, 6, 7]]
+            
+            # [참고]
+            N = int(input())
+            arr = [list(map(int, input().split())) for _ in range(N)]
+            ```<br><br>
     - 접근
         - 배열 순회: n X m 배열의 n*m 개의 모든 원소를 빠짐없이 조사하는 방법
         - 행 우선 순회<br>
-        <figure>
-        <img src="./images/rowfst.PNG" width=350>
-        </figure>
+            <figure>
+            <img src="./images/rowfst.PNG" width=400>
+            </figure>
         - 열 우선 순회<br>
-        <figure>
-        <img src="./images/colfst.PNG" width=350>
-        </figure>
+            <figure>
+            <img src="./images/colfst.PNG" width=400>
+            </figure>
         - 지그재그 순회<br>
-        <figure>
-        <img src="./images/zigzag.PNG" width=350>
-        </figure>
+            <figure>
+            <img src="./images/zigzag.PNG" width=400>
+            </figure>
         - 델타를 이용한 2차 배열탐색<br>
-        <figure>
-        <img src="./images/deltapesudo.PNG" width=350>
-        </figure>
+            <figure>
+            <img src="./images/deltapesudo.PNG" width=400>
+            </figure>
         - 전치 행렬<br>
-        <figure>
-        <img src="./images/flipmatrix.PNG" width=350>
-        </figure>
+            <figure>
+            <img src="./images/flipmatrix.PNG" width=400>
+            </figure>
 ### 8. [부분집합 생성](#목차)
 - 부분집합 생성하기
     - 완전검색 기법으로 부분집합 합 문제를 풀기 위해서는, 우선 집합의 모든 부분 집합을 생성한 후에 각 부분집합의 합을 계산해야 한다.
@@ -267,15 +267,15 @@
         1. 첫 번째 원소부터 순서대로 검색 대상과 키 값이 같은 원소가 있는지 비교하며 찾는다.
         2. 키 값이 동일한 원소를 찾으면 그 원소의 인덱스를 반환한다.
         3. 자료구조의 마지막에 이를 때까지 검색 대상을 찾지 못하면 검색 실패<br>
-    <figure>
-    <img src="./images/sequencesearch.png" width=400>
-    </figure>
+            <figure>
+            <img src="./images/sequencesearch.png" width=400>
+            </figure>
     - 찾고자 하는 원소의 순서에 따라 비교횟수가 결정됨
         - 첫 번째 원소를 찾을 때는 1번 비교, 두 번째 원소를 찾을 때는 2번 비교
         - 정렬되지 않은 자료에서의 순차 검색의 평균 비교 회수 = (n-1)/2
     - 구현 예시<br>
         <figure>
-        <img src="./images/sequencesearchsimul.png" width=350>
+        <img src="./images/sequencesearchsimul.png" width=450>
         </figure>
 - 정렬되어 있는 경우
     - 검색 과정
@@ -300,10 +300,54 @@
     2. 중앙 원소의 값과 찾고자 하는 목표 값을 비교한다.
     3. 목표 값이 중앙 원소의 값보다 작으면 자료의 왼쪽 반에 대해서 새로 검색을 수행하고, 크다면 자료의 오른쪽 반에 대해서 새로 검색을 수행한다.
     4. 찾고자 하는 값을 찾을 때까지 1~3의 과정을 반복한다.<br>
-<figure>
-<img src="./images/binarysearch.png" width=400>
-</figure>
+        <figure>
+        <img src="./images/binarysearch.png" width=400>
+        </figure>
+- 구현 예시
+    - while문 활용<br>
+        <figure>
+        <img src="./images/binarysearchsimul.PNG" width=350>
+        </figure>
+    - 재귀함수 활용<br>
+        <figure>
+        <img src="./images/binarysearchsimul2.PNG" width=450>
+        </figure>
+### 인덱스
+- 인덱스라는 용어는 데이터베이스에서 유래했으며, 테이블에 대한 독작 속도를 높여주는 자료 구조를 일컫는다. 데이터베이스 분야가 아닌 고셍서는 Look up table 등의 용어를 사용하기도 한다.
+- 인덱스를 저장하는데 필요한 디스크 공간은 보통 테이블을 저장하는데 필요한 디스크 공간보다 작다. 왜냐하면 보통 인덱스는 키-필드만 갖고 있고, 테이블의 다른세부 항목들은 갖고 있지 않기 때문이다.<br><br>
+- 배열을 사용한 인덱스
+    - 대량의 데이터를 매번 정렬하면, 프로그램의 반응은 느려질 수 밖에 없다. 이러한 대량 데이터의 성능 저하 문제를 해결하기 위해 배열 인덱스를 사용할 수 있다.<br><br>
+- 다음 예에서 원본 데이터 배열과 별개로, 배열 인덱스를 추가한 예를 보여 주고 있다.
+    - 원본 데이터에 데이터가 삽일될 경우 상대적으로 크기가 작은 인덱스 배열을 정렬하기 때문에 속도가 빠르다.<br>
+    <figure>
+    <img src="./images/idex.PNG" width=600>
+    </figure>
+### 10. [셀렉션 알고리즘](#목차)
+- 저장되어 있는 자료로부터 k번째로 큰 혹은 작은 원소를 찾는 방법
+    - 최소값, 최대값 혹은 중간값을 찾는 알고리즘을 의미하기도 한다.<br><br>
+- 선택 과정
+    1. 정렬 알고리즘을 이용하여 자료 정렬하기
+    2. 원하는 순서에 있는 원소 가져오기
 - 구현 예시<br>
-<figure>
-<img src="./images/binarysearchsimul.PNG" width=350>
-</figure>
+    <figure>
+    <img src="./images/selection.PNG" width=550>
+    </figure>
+### 11. [선택정렬](#목차)
+- 주어진 자료들 중 가장 작은 값의 원소부터 차례대로 선택하여 위치를 교환하는 방식
+    - 셀렉션 알고리즘을 전체 자료에 적용한 것이다.<br><br>
+- 정렬 과정
+    1. 주어진 리스트 중에서 최소값을 찾는다.
+    2. 그 값을 리스트의 맨 앞에 위치한 값과 교환한다.
+    3. 맨 처음 위치를 제외한 나머지 리스트를 대상으로 위의 과정을 반복한다.
+- 시간복잡도 : O(n^2)<br>
+    <figure>
+    <img src="./images/selecsort.png" width=500>
+    </figure>
+- 슈도 코드<br>
+    <figure>
+    <img src="./images/selecsimul.PNG" width=500>
+    </figure>
+- 구현 예시<br>
+    <figure>
+    <img src="./images/selecsimul2.PNG" width=500>
+    </figure>
