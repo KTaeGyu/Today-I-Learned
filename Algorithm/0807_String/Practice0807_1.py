@@ -37,8 +37,6 @@ for tc in range(1, T+1):
 
     for i in range(M):
 
-    print(f'#{tc}', Sample, ":", PassCode)
-
 # # 강사님 코드
 # # 1. for, break 사용 방법
 # T = int(input())
