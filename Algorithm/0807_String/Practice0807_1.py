@@ -37,7 +37,6 @@ for tc in range(1, T+1):
 
     for i in range(M):
 
-
     print(f'#{tc}', Sample, ":", PassCode)
 
 # # 강사님 코드
