@@ -24,18 +24,19 @@ import sys
 sys.stdin = open("input.txt", "r")
 
 n = int(input())
-chars = {}
 moem = ['a', 'e', 'i', 'o', 'u']
 
 for tc in range(n):
     name = input()
+    chars = {}
     try:
-        # 조건 1, 2, 3
         for i in name:
+            # 조건 1, 2
             if 97 <= ord(i) <= 122:
                 pass
             else:
                 raise ValueError
+            # 조건 3
             if i not in chars:
                 chars[i] = 1
             else:
