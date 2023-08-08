@@ -43,4 +43,33 @@ for tc in range(1, T+1):
             result = 1
 
     print(f'#{tc} {result}')
+'''강사님 풀이
+# 풀이1
+T = int(input())
+for tc in range(1, T+1):
+    N = input()
+    M = input()
+    
+    result = 0
+    if N in M:
+        result = 1
+        
+    print(f'#{tc} {result}')
 
+# 풀이2
+T = int(input())
+for tc in range(1, T+1):
+    N = input()
+    M = input()
+    
+    result = 0
+    for i in range(len(M) - len(N) + 1):
+        cnt = 0
+        for j in range(len(str1)):
+            if N[j] == M[i+j]:
+                cnt += 1
+        if cnt == len(N):
+            result = 1
+            
+    print(f'#{tc} {cnt}')
+'''

@@ -17,16 +17,43 @@ T = int(input())
 for tc in range(1, T+1):
     N, M = map(int, input().split())
     strings = [list(input()) for _ in range(N)]
-
+    strings_v = list(zip(*strings))
     n_strings = []
     for i in range(N):
         n_strings.append(''.join(strings[i]))
-        n_strings.append(''.join(list(list(zip(*strings))[i])))
+        n_strings.append(''.join(list(strings_v[i])))
 
     for string in n_strings:
         for i in range(N - M + 1):
             if string[i:i+M] == string[i:i+M][::-1]:
                 print(f'#{tc} {string[i:i+M]}')
+
+"""강사님 풀이
+# 기본 회문
+def is_p(string):
+    return string == string[::-1]
+ 
+    
+# 풀이1
+def find_p(N, M, arr):
+    for i in range(N):
+        for j in range(N - M + 1)
+            h = arr[i][j:j+M]
+            v = [arr[k][i] for k in range(j, j+M)]
+            if h == h[::-1]:
+                return h
+            if v == v[::-1]:
+                return v
+
+T = int(input())
+for tc in range(1, T+1):
+    N, M = map(int, input().split())
+    arr = [list(input()) for _ in range(N)]
+    result = find_p(N, M, arr)
+    print(f'#{tc}', ''.join(result))
+    
+"""
+
 """
 3
 10 10

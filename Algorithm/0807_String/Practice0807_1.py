@@ -33,9 +33,33 @@ T = int(input())
 for tc in range(1, T+1):
     N, M = map(int, input().split())
     Sample = ''.join(input().split())
-    PassCode = ''.join(input().split())
+    # # 방법 1
+    # PassCode = ''.join(input().split())
 
-    for i in range(M):
+    # result = list(PassCode)
+    # pos = 0
+    # for i in range(M):
+    #     for j in range(pos, N):
+    #         if PassCode[i] == Sample[j]:
+    #             pos = j + 1
+    #             result.pop()
+    #             break
+    # if result:
+    #     print(f'#{tc} {0}')
+    # else:
+    #     print(f'#{tc} {1}')
+    # # 방법 2
+    # PassCode = list(input().split())
+    #
+    # for j in range(N):
+    #     if PassCode != [] and PassCode[0] == Sample[j]:
+    #         PassCode.pop(0)
+    #
+    # if PassCode:
+    #     print(f'#{tc} {0}')
+    # else:
+    #     print(f'#{tc} {1}')
+
 
 # # 강사님 코드
 # # 1. for, break 사용 방법
