@@ -64,6 +64,36 @@ for tc in range(1, T+1):
             top += 1
             stack[top] = int(i)
 
+"""강사님 풀이
+T = int(input())
+for tc in range(1, T+1):
+    forth = list(input().split())
+    stack = []
+    error = False
+    for i in range(len(forth) - 1):
+        if forth[i].isdigit():
+            stack.append(forth[i])
+        else:
+            try:
+                b = int(stack.pop())
+                a = int(stack.pop())
+                if forth[i] == "+":
+                    ans = a + b
+                elif forth[i] == "-":
+                    ans = a - b
+                elif forth[i] == "*":
+                    ans = a * b
+                elif forth[i] == "/":
+                    ans = a // b
+                stack.append(ans)
+            except:
+                error = True
+    if error == True or len(stack) != 1:
+        print(f'#{tc} error')
+    else:
+        print(f'#{tc} {stack.pop()}')
+"""
+
 """
 3
 10 2 + 3 4 + * .

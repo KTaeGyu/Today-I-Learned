@@ -51,6 +51,36 @@ for tc in range(1, T+1):
     except ValueError:
         pass
 
+"""강사님 풀이
+def maze():
+    while stack:
+        y, x = stack.pop()
+        arr[y][x] = -1
+        for i in range(4):
+            ny = y + dy[i]
+            nx = x + dx[i]
+            if 0 <= ny < N and 0 <= nx < N:
+                if arr[ny][nx] == 3:
+                    return 1
+                elif arr[ny][nx] == 0:
+                    stack.append((ny, nx))
+    return 0
+
+
+T = int(input())
+for tc in range(1, T+1):
+    N = int(input())
+    arr = [list(map(int, input().split())) for _ in range(N)]
+    dy = [0, 1, 0, -1]
+    dx = [1, 0, -1, 0]
+    for y in range(N):
+        for x in range(N):
+            if arr[y][x] == 2:
+                stack = [(y, x)]
+                break
+    print(f'#{tc} {maze()}')
+"""
+
 """
 3
 5
