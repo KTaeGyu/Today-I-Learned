@@ -53,8 +53,14 @@ for tc in range(1, T+1):
     print(f'#{tc} {last}')
 
 
+"""강사님 코드"""
+T = int(input())
+for tc in range(1, T+1):
+    N, M = map(int, input().split())
+    cheeses = list(map(int, input().split()))
+    pizzas = [[i + 1, cheeses[i]] for i in cheeses]
 
-
+"""
 
 """
 3
