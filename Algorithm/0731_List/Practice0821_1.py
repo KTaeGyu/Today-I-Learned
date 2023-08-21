@@ -37,8 +37,8 @@ for tc in range(1, T+1):
 
     # 좌표에서 숫자 1과 2의 좌표를 정리한 그래프 생성
     graph = {1: [], 2: []}
-    for y in range(N):
-        for x in range(N):
+    for y in range(N+1):
+        for x in range(N+1):
             if arr[y][x] == 1:
                 graph[1].append((y, x))
             if arr[y][x] == 2:
