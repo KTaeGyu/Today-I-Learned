@@ -45,35 +45,54 @@ N x N 크기 지형의 각 칸은 농지와 산 중 하나이다. ( 빈 칸은 �
 """
 import sys
 sys.stdin = open("input.txt", "r")
+from copy import deepcopy
 
-
-def DFS(y, x, day):
+def DFS(y, x, day, d, cnt):
     if day > M:
+        global result
+        result = max(result, cnt)
+        print(cnt, end=' ')
         return
-    for dy, dx in direction:
-        ny, nx = y + dy, x + dx
-        if arr[ny][nx]
-        if 0 <= ny < N and 0 <= nx < N and arr[ny][nx] == 0:
-            arr[y][x] = (2, day)
-            DFS(y, x, day + 1)
-            arr[y][x] = 0
+    for i in range(4):
+        ny, nx = y + move_direction[(i + d) % 4][0], x + move_direction[(i + d) % 4][1]
+        if 0 <= ny < N and 0 <= nx < N and temp_arr[ny][nx] == 2 and plant[(ny, nx)] < day - 4:
+            cnt += 1
+            nd = (i + d + 3) % 4
+            temp_arr[ny][nx] = 0
+            del plant[(ny, nx)]
+            DFS(ny, nx, day + 1, nd, cnt)
+            return
+        if 0 <= ny < N and 0 <= nx < N and temp_arr[ny][nx] == 0:
+            nd = (i + d + 3) % 4
+            temp_arr[y][x] = 2
+            plant[(y, x)] = day
+            DFS(ny, nx, day + 1, nd, cnt)
+            return
     else:
-        DFS(y, x, day + 1)
+        DFS(y, x, day + 1, d, cnt)
+        return
 
+move_direction = [(0, 1), (-1, 0), (0, -1), (1, 0)]
+head_direction = [0, 1, 2, 3]
 
-direction = [(-1, 0), (0, 1), (-1, 0), (0, 1)]
 T = int(input())
 for tc in range(1, T+1):
+    result = 0
+    plant = {}
     N, M = map(int, input().split())
     arr = [list(map(int, input().split())) for _ in range(N)]
-    max_v = 0
-    for y in range(N):
-        for x in range(N):
-            cnt = 0
-            if arr[y][x] == 0:
-                DFS(y, x, 1)
-            if max_v < cnt:
-                max_v = cnt
+    for sy in range(N):
+        for sx in range(N):
+            if arr[sy][sx] == 0:
+                for sd in head_direction:
+                    temp_arr = deepcopy(arr)
+                    DFS(sy, sx, 1, sd, 0)
+                print(':', end=' ')
+    print()
+    print(f'#{tc} {result}')
+
+
+
 """
 10
 6 11
