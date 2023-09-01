@@ -14,5 +14,7 @@ while len(ugly) < max(K):
         heapq.heappush(heap, n * 2)
         heapq.heappush(heap, n * 3)
         heapq.heappush(heap, n * 5)
+
 for i in K:
     print(ugly[i-1], end=' ')
+    
