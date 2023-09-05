@@ -47,30 +47,87 @@ import sys
 sys.stdin = open("input.txt", "r")
 from copy import deepcopy
 
+
 def DFS(y, x, day, d, cnt):
     if day > M:
         global result
         result = max(result, cnt)
-        print(cnt, end=' ')
         return
     for i in range(4):
+        # 오른쪽, 위, 왼쪽, 아래 순서로 다음 방향 탐색
         ny, nx = y + move_direction[(i + d) % 4][0], x + move_direction[(i + d) % 4][1]
-        if 0 <= ny < N and 0 <= nx < N and temp_arr[ny][nx] == 2 and plant[(ny, nx)] < day - 4:
-            cnt += 1
-            nd = (i + d + 3) % 4
-            temp_arr[ny][nx] = 0
-            del plant[(ny, nx)]
-            DFS(ny, nx, day + 1, nd, cnt)
-            return
-        if 0 <= ny < N and 0 <= nx < N and temp_arr[ny][nx] == 0:
-            nd = (i + d + 3) % 4
-            temp_arr[y][x] = 2
-            plant[(y, x)] = day
-            DFS(ny, nx, day + 1, nd, cnt)
-            return
+        # 다음 방향 탐색 시 머리 방향
+        nd = (i + d + 3) % 4
+
+        # 현재 농지에 곡식이 열린 경우(arr[y][x] == 2)
+        if 0 <= ny < N and 0 <= nx < N and temp_arr[y][x] == 2:
+            # 이동할 수 있는 경우
+            if temp_arr[ny][nx] == 0:
+                # 오전/ 수확
+                cnt += 1
+                temp_arr[y][x] = 0
+                plant[(y, x)][0] = M
+                # 오후/ 이동
+                DFS(ny, nx, day + 1, nd, cnt)
+                return
+            # 이동할 수 있는 경우
+            elif temp_arr[ny][nx] == 2 and (plant[(ny, nx)][0] + plant[(ny, nx)][1] < day - 4):
+                # 오전/ 수확
+                cnt += 1
+                temp_arr[y][x] = 0
+                plant[(y, x)][0] = M
+                # 오후/ 이동
+                DFS(ny, nx, day + 1, nd, cnt)
+                return
+
+        # 현재 빈농지이고(arr[y][x] == 0),
+        if 0 <= ny < N and 0 <= nx < N and temp_arr[y][x] == 0:
+            # 이동할 수 있는 경우
+            if temp_arr[ny][nx] == 0:
+                # 오전/ 현재 위치에 씨앗을 심음
+                temp_arr[y][x] = 2
+                # 심는 씨앗에 심은 날짜와, 그 지역에 심어진 횟수를 기록한다.
+                if (y, x) not in plant.keys():
+                    plant[(y, x)] = [day, 0]
+                elif (y, x) in plant.keys():
+                    plant[(y, x)][0] = day
+                    plant[(y, x)][1] += 1
+                # 오후/ 이동
+                DFS(ny, nx, day + 1, nd, cnt)
+                return
+            # 이동할 수 있는 경우
+            elif temp_arr[ny][nx] == 2 and (plant[(ny, nx)][0] + plant[(ny, nx)][1] < day - 4):
+                # 오전/ 현재 위치에 씨앗을 심음
+                temp_arr[y][x] = 2
+                # 심는 씨앗에 심은 날짜와, 그 지역에 심어진 횟수를 기록한다.
+                if (y, x) not in plant.keys():
+                    plant[(y, x)] = [day, 0]
+                elif (y, x) in plant.keys():
+                    plant[(y, x)][0] = day
+                    plant[(y, x)][1] += 1
+                # 오후/ 이동
+                DFS(ny, nx, day + 1, nd, cnt)
+                return
+
+    # 이동할 수 없는 경우
     else:
-        DFS(y, x, day + 1, d, cnt)
-        return
+
+        # 현재 농지에 곡식이 열린 경우(arr[y][x] == 2)
+        if temp_arr[y][x] == 2:
+            # 오전/ 수확
+            cnt += 1
+            temp_arr[y][x] = 0
+            plant[(y, x)][0] = M
+            # 오후/ 패스
+            DFS(y, x, day + 1, d, cnt)
+            return
+
+        # 현재 빈농지일 경우(arr[y][x] == 0)
+        if temp_arr[y][x] == 0:
+            # 오후/ 패스
+            DFS(y, x, day + 1, d, cnt)
+            return
+
 
 move_direction = [(0, 1), (-1, 0), (0, -1), (1, 0)]
 head_direction = [0, 1, 2, 3]
@@ -78,20 +135,16 @@ head_direction = [0, 1, 2, 3]
 T = int(input())
 for tc in range(1, T+1):
     result = 0
-    plant = {}
     N, M = map(int, input().split())
     arr = [list(map(int, input().split())) for _ in range(N)]
     for sy in range(N):
         for sx in range(N):
             if arr[sy][sx] == 0:
                 for sd in head_direction:
+                    plant = {}
                     temp_arr = deepcopy(arr)
                     DFS(sy, sx, 1, sd, 0)
-                print(':', end=' ')
-    print()
     print(f'#{tc} {result}')
-
-
 
 """
 10
